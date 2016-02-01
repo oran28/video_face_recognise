@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import sys
-DLIB_PATH = 'F:/dlib-18.17/python_examples'
+import sys,os
+DLIB_PATH = os.environ['DLIB_PATH']
 
 sys.path.append(DLIB_PATH)
 
@@ -41,8 +41,8 @@ class FaceProc(object):
         self.predictor = dlib.shape_predictor(dlib_model_shape)
         self.desc_name = 'desc'
 
-        self.net = caffe.Net( caffe_model_path + 'deploy.prototxt',
-                              caffe_model_path + 'DeepFace_set003_net.caffemodel',
+        self.net = caffe.Net( caffe_model_path + 'LightenedCNN_A_deploy.prototxt',
+                              caffe_model_path + 'LightenedCNN_A.caffemodel',
                               caffe.TEST )
                               
         self.outputs = {'eltwise6': {'k':self.desc_name}}
